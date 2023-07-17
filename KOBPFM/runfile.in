@@ -1,0 +1,10 @@
+## ------------------------------------- ##
+## Variables that can be set are :       ##
+## EPS0, ALPHA, GAMMA, DELTA, J,         ##
+## TAU, THETA0, DIFF_COEFF, LATENT_HEAT  ##
+## SAVE_FREQ, NOISE_AMP, NOISE_FREQ      ##
+## ------------------------------------- ##
+run 2000
+set NOISE_FREQ = 1e-5
+set THETA0 = 0.01
+run 5000

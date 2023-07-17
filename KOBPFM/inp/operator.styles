@@ -1,0 +1,26 @@
+## This is the input file for PDE Operators
+## ---------------------------------------------------------------------------------
+## The Operators run on a 2D-stencil as such : 
+## op-name    (0,0) (0,1) (1,0) (0,-1) (-1,0) (1,1) (1,-1) (-1,-1) (-1,1)
+##            the coefficient at relative positions of stencil points (y,x)
+## chosen operators must belong to the same stencil
+## Spaces are must!!
+## Stencil size must be chosen in compile time in the `compile_time_vars.in` file
+## ---------------------------------------------------------------------------------
+## ---------------------------------------------------------------------------------
+## To select an operator change the `---` to `@@` 
+## ---------------------------------------------------------------------------------
+## stencil 5 is not yet implemented
+--- stencil 5
+--- laplacian -4 +1 +1 +1 +1 ;
+--- stencil 9
+--- laplacian  -4 +1 +1 +1 +1  0  0  0  0 ;
+--- laplacian  -8 +1 +1 +1 +1 +1 +1 +1 +1 ;
+--- laplacian -12 +2 +2 +2 +2 +1 +1 +1 +1 ;
+--- laplacian -12 +1 +1 +1 +1 +2 +2 +2 +2 ;
+--- laplacian -20 +4 +4 +4 +4 +1 +1 +1 +1 ;
+--- laplacian -20 +1 +1 +1 +1 +4 +4 +4 +4 ;
+--- laplacian  -4 +0.5 +0.5 +0.5 +0.5 +0.5 +0.5 +0.5 +0.5 ;
+--- laplacian  -4 +0.6 +0.6 +0.6 +0.6 +0.4 +0.4 +0.4 +0.4 ;
+set laplacian  -4 +0.75 +0.75 +0.75 +0.75 +0.25 +0.25 +0.25 +0.25 ;
+## End of file
