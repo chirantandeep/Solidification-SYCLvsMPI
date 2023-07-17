@@ -1,0 +1,27 @@
+## This is the Inputfile for Kobayashi Potentials
+## --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- 
+## The potentials are represented in polynomial form 
+## with coefficients to respective powers without brackets
+## Our common potential is as such :
+## g1 = phi*(1-phi)*(phi-0.5+mm) which expanded is : 
+## g1 = -mm*phi^2 - phi^3 + mm*phi + 1.5*phi^2 - 0.5*phi
+## because we are using regex pattern matching to read the coefficients
+## each term should be written explicitely as powers of both `mm` and `phi` 
+## as : -1.6^mm^2*phi^5
+## `phi` is the phase field value
+## `mm` is the undercooling term, which is (alpha/pi)arctan(gamma(Temp))
+## MAX_BARRIER_POTENTIAL_TERMS = 9 -> this should be fixed at compile time
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- 
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- 
+--- To select a potential change the `---` to `set` at the beginning of the line
+--- potential <no-of-terms> <term1> <term2> ...
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- 
+--- $phi*(1-phi)*(phi-0.5+mm)$
+set potential 5 -0.5*mm^0*phi^1 +1.5*mm^0*phi^2 +1.0*mm^1*phi^1 -1.0*mm^0*phi^3 -1.0*mm^1*phi^2
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- 
+--- $phi^2*(1-phi^2)*(phi-0.5+mm)$
+--- potential 6 -1.0*mm^1*phi^4 -1.0*mm^0*phi^5 +0.5*mm^0*phi^4 +1.0*mm^1*phi^2 +1.0*mm^0*phi^3 -0.5*mm^0*phi^2
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- 
+--- $phi^3*(1-phi^3)*(phi-0.5+mm)$
+--- potential 6 -1.0*mm^0*phi^6 -1.0*mm^0*phi^7 +0.5*mm^0*phi^6 +1.0*mm^1*phi^3 +1.0*mm^0*phi^4 -0.5*mm^0*phi^3
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- 

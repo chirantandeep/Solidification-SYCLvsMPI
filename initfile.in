@@ -1,0 +1,57 @@
+------------------------------------
+-- rectangle = { 50%, 50%, 5, 90%}
+set circle = { 50%, 50%, 5 }
+------------------------------------
+-----------mesh--parameters---------
+MESH_X   = 600
+MESH_Y   = 600
+OFFSET   = 2
+DELTA_X  = 0.01
+DELTA_Y  = 0.01
+DELTA_T  = 1e-4
+------------------------------------
+----kobayashi-model-parameters------
+PI           = 3.14152557
+EPS0         = 0.01
+ALPHA        = 0.92
+GAMMA        = 10
+DELTA        = 0.12
+J            = 4
+TAU          = 3e-4
+THETA0       = 0.0
+DIFF_COEFF   = 1.0
+LATENT_HEAT  = 2.2
+------------------------------------
+-------initialization-parameters----
+SOLID        =  0.0 
+LIQUID       =  1.0 
+TEMP_SOLID   = -5.0
+TEMP_LIQUID  = -1.0
+------------------------------------
+------time-steps-&-save-frequency---
+NTIMESTEPS  = 2000
+NSAVE       = 100
+------------------------------------
+------noise-parameters--------------
+NOISE_AMP  = 5e-4
+NOISE_FREQ = 30
+------------------------------------
+-----choose-a-potential-function----
+set potential 5 -0.5*mm^0*phi^1 +1.5*mm^0*phi^2 +1.0*mm^1*phi^1 -1.0*mm^0*phi^3 -1.0*mm^1*phi^2
+--- potential 6 -1.0*mm^1*phi^4 -1.0*mm^0*phi^5 +0.5*mm^0*phi^4 +1.0*mm^1*phi^2 +1.0*mm^0*phi^3 -0.5*mm^0*phi^2
+------------------------------------
+----choose-a-laplacian-operator-----
+--- laplacian  -4 +1 +1 +1 +1  0  0  0  0 ;
+--- laplacian  -8 +1 +1 +1 +1 +1 +1 +1 +1 ;
+--- laplacian -12 +2 +2 +2 +2 +1 +1 +1 +1 ;
+--- laplacian -12 +1 +1 +1 +1 +2 +2 +2 +2 ;
+--- laplacian -20 +4 +4 +4 +4 +1 +1 +1 +1 ;
+--- laplacian -20 +1 +1 +1 +1 +4 +4 +4 +4 ;
+set laplacian  -4 +0.5 +0.5 +0.5 +0.5 +0.5 +0.5 +0.5 +0.5 ;
+--- laplacian  -4 +0.6 +0.6 +0.6 +0.6 +0.4 +0.4 +0.4 +0.4 ;
+--- laplacian  -4 +0.75 +0.75 +0.75 +0.75 +0.25 +0.25 +0.25 +0.25 ;
+------------------------------------
+-------output-format----------------
+SAVE_AS = vtk
+------------------------------------
+--------------EOF-------------------
